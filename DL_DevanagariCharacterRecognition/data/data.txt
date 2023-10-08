@@ -1,0 +1,1 @@
+Dataset is available at kaggle : https://www.kaggle.com/datasets/rishianand/devanagari-character-set/data
