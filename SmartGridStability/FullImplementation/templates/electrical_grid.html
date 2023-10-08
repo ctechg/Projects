@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    {% if title %}
+        <title>Electrical Grid</title>
+    {% else %}
+        <title>Electrical Grid</title>
+    {% endif %}
+
+</head>
+<body>
+    
+      <div class="bg-img">
+        <div class="container">
+          <div class="topnav">
+            <a href="{{ url_for('electrical_grid') }}">Home</a>
+            <a href="{{ url_for('predictor') }}">Stability Predictor</a>
+          </div>   
+        </div>
+      </div>
+      
+
+        
+      <div id="gridpage">
+
+        <h1>Smart Grid Stability</h1><br>
+         
+         Smart Grid is a concept for transforming the electric power grid by using advanced automatic control, communications techniques and information technology. In a smart grid, consumer demand information is collected, centrally evaluated against current supply conditions and the resulting proposed price information is sent back to customers for them to decide about usage. The objective is to understand and plan for both energy production, consumption disturbances and fluctuations introduced by system participants in a dynamic way, considering technical aspects, participant behaviour of responding to changes in the associated economic aspects or energy price. We are taking total power balance (nominal power produced or consumed at each grid node), reaction time (the response time of participants to adjust consumption and/or production in response to price changes) and price elasticity (willingness to change consumption in response to price changes) as input features, analyzing the data, fitting the model using artificial neural networks.<br><br>
+
+         Before the rise of renewable energy sources, the traditional operating ecosystem involved few production entities (sources) supplying energy to consumers over unidirectional flows. With the advancement of renewable options, end users (households and enterprises) now not only consume energy but have the ability to produce and supply it - hence a new term to designate them, 'prosumers'. As a result, energy flow within distribution grids - 'smart grids' - has become bidirectional.<br><br>
+
+         The local stability of the four-node star architecture, comprising one power source (a centralized generation node) supplying energy to three consumption nodes is analyzed by implementing Decentral Smart Grid Control concept. The Decentral Smart Grid Control (DSGC) system ties the electricity price to the grid frequency so that it is available to all participants.<br><br>
+
+        <img src="{{ url_for('static', filename='4node.png') }}" alt="4 - Node Star" width = "70%" class="center"/>
+        <br><br>
+
+        <h3>ANN Model</h3><br>
+        
+         The following artificial neural network (ANN) architecture is used for predicting stability of smart grid. It reflects an sequential structure with:<br>
+        
+        <ul>
+          <li>One input layer (12 input nodes)</li>
+          <li>Three hidden layers (240, 48 and 12 nodes, respectively)</li>
+          <li>One single-node output layer</li>
+        </ul>
+  
+        
+         As features are numerical real numbers within ranges, we have used 'relu' as the activation function for hidden layers. Similarly, as this is a logistic classification exercise, where the output is binary ('0' for 'unstable', '1' for 'stable'), we have used 'sigmoid' as the activation function for hidden layers. Compilation is done with 'adam' as optimizer and 'binary_crossentropy' as the loss function.
+
+        <br><br>
+        <img src="{{ url_for('static', filename='ann.png') }}" alt="ANN model" width="70%" class="center"/><br>
+        
+        <br>
+        
+        <h4>Sources</h4><br>
+        
+        <ul>
+          <li>Data : <a href="https://archive.ics.uci.edu/ml/datasets/Electrical+Grid+Stability+Simulated+Data+">Electrical Grid Stability Simulated Dataset</a></li>
+          <li>Research paper cited : <a href="https://dbis.ipd.kit.edu/download/DSGC_simulations.pdf">Arzamasov, Vadim, Klemens Böhm, and Patrick Jochem. 'Towards Concise Models of Grid Stability.' Communications, Control, and Computing Technologies for Smart Grids (SmartGridComm), 2018 IEEE International Conference on. IEEE, 2018 [Online]</a></li>
+        </ul>
+        <br>
+        <h5>Designed by: Chirag Gupta, Devendra Singh Bhati, Hukam Singh</h5><br>
+
+      </div>
+
+</body>
+    
+    <style>
+
+        body { 
+          font-family: Arial, Helvetica, Times;
+          background-color:  #e5f2e5;
+        }
+         
+        .bg-img {
+          background-image: url("/static/hybrid-Solar.gif");
+          min-height: 500px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        
+        .container {
+          position: absolute;
+          margin: 20px;
+          width: auto;
+        }
+
+        
+        .topnav {
+          overflow: hidden;
+          background-color: #ffffff;
+          opacity: 0.9;
+          
+        }
+
+        .topnav a {
+          float: left;
+          color: #000000;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 18px;
+          border-style: solid;
+          border-width: 1px;
+        }
+
+        .topnav a:last-child { 
+          border-left: none; 
+        }
+
+        .topnav a:hover {
+          background-color: #000000;
+          color: #ffffff;  
+        }
+         
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          border-style: solid;
+          border-width: 1px; 
+        }
+    
+        #gridpage {
+          margin-left: 15%;
+          margin-right: 15%;
+          margin-top: 2%;
+          display: block;
+          text-align: justify;
+        }
+
+
+    </style>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</html>
